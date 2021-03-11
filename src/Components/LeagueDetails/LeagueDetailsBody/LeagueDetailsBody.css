@@ -1,0 +1,14 @@
+.legueDetailsHeader{
+   background-color: #8a8810;
+   color:white;
+}
+
+@media only screen and (max-width: 768px) {
+    #first {
+        order: 2;
+    }
+    #second {
+        order: 1;
+    }
+   
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import LeagueDetailsHeader from './LeagueDetailsHeader/LeagueDetailsHeader';
+import LeagueDetailsBody from './LeagueDetailsBody/LeagueDetailsBody';
 
 const LeagueDetails = () => {
     const {idLeague} = useParams();
@@ -13,8 +13,7 @@ const LeagueDetails = () => {
     },[idLeague]);
     return (
         <div>
-            <h1>This is Club details {idLeague}</h1>
-            {leagues.map(league => <LeagueDetailsHeader league={league}></LeagueDetailsHeader> )}
+            {leagues.map(league => <LeagueDetailsBody league={league}></LeagueDetailsBody> )}
         </div>
     );
 };

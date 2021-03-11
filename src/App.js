@@ -5,10 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import LeagueDetails from './Components/LeagueDetails/LeagueDetails';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Leagues from './Components/Leagues/Leagues';
+import NoMatch from './Components/NoMatch/NoMatch';
 function App() {
   const [leagues, setLeague] = useState([]);
   useEffect(() => {
@@ -17,29 +19,28 @@ function App() {
       .then(res => res.json())
       .then(data => setLeague(data.countrys));
   }, []);
-  // const data = teams.leagues;
-  // console.log(teams[0])
-  // clubs.map(team => console.log(team))
   return (
     <div className="App">
       <Router>
         <Switch>
           <Route exact path="/">
             {
-              leagues.map(league => <League leagues={league}></League>)
+              <Leagues league={leagues}></Leagues>
             }
           </Route>
           <Route path="/club">
             {
-              leagues.map(league => <League leagues={league}></League>)
+              leagues.map(league => <League leagues={league} key={league.idLeague}></League>)
             }
           </Route>
-          <Route path="/clubDteails/:idLeague">
+          <Route path="/leagueDteails/:idLeague">
             <LeagueDetails></LeagueDetails>
+          </Route>
+          <Route path="*">
+            <NoMatch></NoMatch>
           </Route>
         </Switch>
       </Router>
-      <h1>{leagues.length}</h1>
 
 
     </div>
